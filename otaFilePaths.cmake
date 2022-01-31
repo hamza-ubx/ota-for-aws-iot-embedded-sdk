@@ -8,27 +8,6 @@
 # 3rdparty source files.
 include( ${CMAKE_CURRENT_LIST_DIR}/source/dependency/coreJSON/jsonFilePaths.cmake )
 
-set( TINYCBOR_SOURCES
-    "${CMAKE_CURRENT_LIST_DIR}/source/dependency/3rdparty/tinycbor/src/cborpretty.c"
-    "${CMAKE_CURRENT_LIST_DIR}/source/dependency/3rdparty/tinycbor/src/cborpretty_stdio.c"
-    "${CMAKE_CURRENT_LIST_DIR}/source/dependency/3rdparty/tinycbor/src/cborencoder.c"
-    "${CMAKE_CURRENT_LIST_DIR}/source/dependency/3rdparty/tinycbor/src/cborencoder_close_container_checked.c"
-    "${CMAKE_CURRENT_LIST_DIR}/source/dependency/3rdparty/tinycbor/src/cborerrorstrings.c"
-    "${CMAKE_CURRENT_LIST_DIR}/source/dependency/3rdparty/tinycbor/src/cborparser.c"
-    "${CMAKE_CURRENT_LIST_DIR}/source/dependency/3rdparty/tinycbor/src/cborparser_dup_string.c"
-)
-set(TINYCBOR_INCLUDE_DIRS
-    "${CMAKE_CURRENT_LIST_DIR}/source/dependency/3rdparty/tinycbor/src"
-)
-# Use C99 for tinycbor as it is incompatible with C90
-if(CMAKE_C_STANDARD LESS 99)
-    set_source_files_properties(
-        ${TINYCBOR_SOURCES}
-        PROPERTIES
-        COMPILE_FLAGS "-std=gnu99"
-    )
-endif()
-
 # OTA library source files, including 3rdparties.
 set( OTA_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/source/include/ota.h"
@@ -82,7 +61,6 @@ set( OTA_INCLUDE_OS_FREERTOS_DIRS
 # OTA library MQTT backend source files.
 set( OTA_MQTT_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/source/ota_mqtt.c"
-    "${CMAKE_CURRENT_LIST_DIR}/source/ota_cbor.c"
     "${CMAKE_CURRENT_LIST_DIR}/source/include/ota_mqtt_private.h"
     "${CMAKE_CURRENT_LIST_DIR}/source/include/ota_cbor_private.h"
 )
