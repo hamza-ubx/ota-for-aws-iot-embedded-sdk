@@ -111,3 +111,8 @@ doxygen docs/doxygen/config.doxyfile
 ## Contributing
 
 See [CONTRIBUTING.md](./.github/CONTRIBUTING.md) for information on contributing.
+
+## Instructions for builiding static library using ARMCC
+1- Checkout branch "armcc-build"
+2- Run command `cmake -S . -B ..\build -DCMAKE_C_COMPILER=armcc -GNinja` in awsOtaLib directory
+3- Run Command `ninja` in build directory
